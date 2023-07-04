@@ -58,8 +58,8 @@ MHplot <- function(mat, legend = FALSE){
 		GAMMA <- GAMMA + (Ga1[i]+Ga2[i])*gamma[i]
 
 		posC <- posnu1^2 + posnu2^2
-		posA[i] <- 1/(2*sqrt(posC))*(2*posC + posnu1[i]*posGc2[i]/sqrt(posGc1[i]) - posnu2[i]*sqrt(posGc2[i]) )
-		posB[i] <- 1/(2*sqrt(posC))*(2*posC - posnu1[i]*sqrt(posGc1[i]) + posnu2[i]*posGc1[i]/sqrt(posGc2[i]) )
+		posA[i] <- 1/(2*sqrt(posC))*(2*posC + posnu1*posGc2[i]/sqrt(posGc1[i]) - posnu2*sqrt(posGc2[i]) )
+		posB[i] <- 1/(2*sqrt(posC))*(2*posC - posnu1*sqrt(posGc1[i]) + posnu2*posGc1[i]/sqrt(posGc2[i]) )
 	}
 
 	varGAMMA <- 0
