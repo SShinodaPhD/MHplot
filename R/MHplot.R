@@ -97,7 +97,7 @@ MHplot <- function(mat, legend = FALSE){
 		  ggplot2::geom_segment(x=0,y=1,xend=1/2,yend=1/2,color='red',linewidth=0.01,linetype=2) +
 		  ggplot2::geom_segment(x=1/2,y=1/2,xend=1,yend=0,color='blue',linewidth=0.01,linetype=2) +
 		  ggplot2::geom_text(ggplot2::aes(x=0.65, y=0.75,label=gamma), size=4, color=scolor) +
-		  ggplot2::theme_void() + ggplot2::theme(panel.border = ggplot2::element_rect(linewidth=0.5)) +
+		  ggplot2::theme_void() + ggplot2::theme(panel.border=ggplot2::element_rect(colour="black", size=0.1, fill=NA)) +
 		  ggplot2::scale_y_continuous(breaks=c(0, 0.25, 0.5, 0.75, 1.0), limits=c(0,1.05)) +
 		  ggplot2::scale_x_continuous(breaks=c(0, 0.25, 0.5, 0.75, 1.0), limits=c(0,1.05))
 
@@ -112,9 +112,6 @@ MHplot <- function(mat, legend = FALSE){
 		xscale=c(0,nr), yscale=c(0,nr),
 		layout=grid::grid.layout(nr, nr))
 	)
-	for(i in 1:nr){
-		print(tmp02[[i]], vp=grid::viewport(layout.pos.row=nr+1-i, layout.pos.col=i))
-	}
 	grid::grid.rect()
 	grid::grid.xaxis(at=1:nr - 1/2, label=F)
 	grid::grid.text(1:nr, x=(seq(0, 1, length.out=(nr+1))+1/nr/2)[-(nr+1)], y=-0.05)
@@ -125,6 +122,9 @@ MHplot <- function(mat, legend = FALSE){
 	if(legend==TRUE){
 	  grid::grid.text(bquote(hat(Gamma) == .(tmp04[1])), x=0.01, y=0.95, just="left")
 	  grid::grid.text(paste("95%CI = [", tmp04[2], ", ", tmp04[3], "]", sep=""), x=0.01, y=0.85, just="left")
+	}
+	for(i in 1:nr){
+	  print(tmp02[[i]], vp=grid::viewport(layout.pos.row=nr+1-i, layout.pos.col=i))
 	}
 	return(grDevices::recordPlot())
 }
