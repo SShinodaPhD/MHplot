@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of MHplot is to ...
+The goal of MHplot is to visualise the marginal homogeneity of row and column variables in a square contingency table.
 
 ## Installation
 
@@ -35,21 +35,25 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(MHplot)
-## basic example code
+
+## basic example of a sqare contingency table
+mat426 <- matrix(c(
+	 0, 30,  30, 30,
+	10,  0,  30, 30,
+	10, 10,   0,  0,
+	10, 10, 160,  0
+),4,4,byrow=T)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+If legend is FALSE, the estimate of measure and 95% confidence intervals are not displayed (default).
 
-```{r cars}
-summary(cars)
+```{r}
+MHplot(mat=mat426, legend = FALSE)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+If legend is TRUE, the estimate of measure and 95% confidence intervals are displayed.
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r}
+MHplot(mat=mat426, legend = TRUE)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
