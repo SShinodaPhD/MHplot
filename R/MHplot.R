@@ -7,13 +7,8 @@
 #' @export
 #'
 #' @examples
-#' mat422 <- matrix(c(
-#' 0, 10, 10, 10,
-#' 30,  0, 10, 10,
-#' 30, 30,  0, 10,
-#' 30, 30, 30,  0
-#' ),4,4,byrow=T)
-#' MHplot(mat422, F)
+#' mat422 <- matrix(c(0,10,10,10,30,0,10,10,30,30,0,10,30,30,30,0),4,4,byrow=TRUE)
+#' MHplot(mat422, FALSE)
 MHplot <- function(mat, legend = FALSE){
 	alp <- 1/10^4	#Haldane prior
 	N <- sum(mat)
@@ -83,8 +78,8 @@ MHplot <- function(mat, legend = FALSE){
 		}
 	}
 	seGAMMA <- sqrt(varGAMMA/N)
-	CIl <- GAMMA - qnorm(0.975)*seGAMMA
-	CIu <- GAMMA + qnorm(0.975)*seGAMMA
+	CIl <- GAMMA - stats::qnorm(0.975)*seGAMMA
+	CIu <- GAMMA + stats::qnorm(0.975)*seGAMMA
 
  	size <- Ga1 +Ga2
 	modsize <- size*20	#modified point size
@@ -131,5 +126,5 @@ MHplot <- function(mat, legend = FALSE){
 	  grid::grid.text(bquote(hat(Gamma) == .(tmp04[1])), x=0.01, y=0.95, just="left")
 	  grid::grid.text(paste("95%CI = [", tmp04[2], ", ", tmp04[3], "]", sep=""), x=0.01, y=0.85, just="left")
 	}
-	return(recordPlot())
+	return(grDevices::recordPlot())
 }

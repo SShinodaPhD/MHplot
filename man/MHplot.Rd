@@ -18,11 +18,6 @@ figure
 Title
 }
 \examples{
-mat422 <- matrix(c(
-0, 10, 10, 10,
-30,  0, 10, 10,
-30, 30,  0, 10,
-30, 30, 30,  0
-),4,4,byrow=T)
-MHplot(mat422, F)
+mat422 <- matrix(c(0,10,10,10,30,0,10,10,30,30,0,10,30,30,30,0),4,4,byrow=TRUE)
+MHplot(mat422, FALSE)
 }
