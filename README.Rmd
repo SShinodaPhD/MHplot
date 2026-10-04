@@ -36,13 +36,13 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(MHplot)
 
-## basic example of a sqare contingency table
+## basic example of a square contingency table
 mat426 <- matrix(c(
 	 0, 30,  30, 30,
 	10,  0,  30, 30,
 	10, 10,   0,  0,
 	10, 10, 160,  0
-),4,4,byrow=T)
+),4,4,byrow=TRUE)
 ```
 
 If legend is FALSE, the estimate of measure and 95% confidence intervals are not displayed (default).
